@@ -14,5 +14,5 @@ public class AtomParam extends AtomBaseParam {
     /**
      * 以下请求参数只是示例，具体可以删除修改成你要的参数
      */
-    private String desc; //描述信息
+    private String script; //描述信息
 }

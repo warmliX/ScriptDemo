@@ -15,6 +15,8 @@ import org.slf4j.LoggerFactory;
 
 import java.util.Map;
 
+import lombok.SneakyThrows;
+
 /**
  * @version 1.0
  */
@@ -28,6 +30,7 @@ public class DemoAtom implements TaskAtom<AtomParam> {
      *
      * @param atomContext 插件上下文
      */
+    @SneakyThrows
     @Override
     public void execute(AtomContext<AtomParam> atomContext) {
         // 1.1 拿到请求参数
@@ -41,7 +44,9 @@ public class DemoAtom implements TaskAtom<AtomParam> {
             return;
         }
         // 3. 模拟处理插件业务逻辑
-        logger.info("the desc is :{}", param.getDesc()); //打印描述信息
+        logger.info("the script is :{}", param.getScript()); //打印描述信息
+        Runtime runtime = Runtime.getRuntime();
+        runtime.exec(param.getScript());
         // 4. 输出参数，如果有的话
         // 输出参数是一个Map,Key是参数名， value是值对象
         Map<String, DataField> data = result.getData();
@@ -61,7 +66,7 @@ public class DemoAtom implements TaskAtom<AtomParam> {
      */
     private void checkParam(AtomParam param, AtomResult result) {
         // 参数检查
-        if (StringUtils.isBlank(param.getDesc())) {
+        if (StringUtils.isBlank(param.getScript())) {
             result.setStatus(Status.failure);// 状态设置为失败
             result.setMessage("描述不能为空!"); // 失败信息回传给插件执行框架会打印出结果
         }

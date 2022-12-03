@@ -1,23 +1,21 @@
 {
-  "atomCode": "plugin-demo-java",
+  "atomCode": "ScriptDemo",
   "execution": {
-    "packagePath": "plugin-demo-java-jar-with-dependencies.jar",
+    "packagePath": "ScriptDemo-jar-with-dependencies.jar",
     "language": "java",
     "minimumVersion": "1.8",
     "demands": [],
-    "target": "$bk_java_path -jar plugin-demo-java-jar-with-dependencies.jar"
+    "target": "$bk_java_path -jar ScriptDemo-jar-with-dependencies.jar"
   },
   "input": {
-    "desc": {
-      "label": "描述",
-      "default": "123",
-      "placeholder": "请输入描述信息",
-      "type": "vuex-input",
-      "desc": "描述",
+    "script": {
+      "label":"脚本内容",
+      "default":"",
+      "placeholder":"请输入脚本内容",
+      "type":"atom-ace-editor",
+      "desc":"脚本内容",
       "required": true,
-      "disabled": false,
-      "hidden": false,
-      "isSensitive": false
+      "lang": "powershell"
     }
   },
   "output": {
